@@ -1,4 +1,4 @@
-import { useMemo, useReducer } from 'react';
+import { useMemo } from 'react';
 import { Activity } from '../types'
 import MercadoDisplay from './MercadoDisplay'
 
