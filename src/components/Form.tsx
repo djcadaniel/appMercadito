@@ -88,7 +88,7 @@ export default function Form({dispatch, state}: FormProps) {
 
   return (
     <form 
-      className="space-y-5 shadow p-10 rounded-lg"
+      className="w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg"
       onSubmit={handleSubmit}
     >
       <div>

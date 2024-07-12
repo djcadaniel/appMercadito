@@ -3,6 +3,7 @@ import { categories } from "../data/categories";
 import { Activity } from "../types"
 import { Dispatch, useMemo } from "react";
 import { ActivityActions } from "../reducers/activity-reducer";
+import imgListVacia from '/img/listavacia.svg'
 
 type ActivityListProps = {
   activities: Activity[],
@@ -49,9 +50,11 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
 
   return (
     <>
-      <h2 className="text-xl md:text-4xl font-bold text-slate-600 text-center">Lista de Compras</h2>
       {isEmpty ?
-        <p>No hay productos aún</p> :
+        <div className="w-full flex flex-col items-center space-y-6">
+          <img src={imgListVacia} alt="" className="w-[15rem] max-w-full"/>
+          <p className="text-[#8F8F91] text-xl font-bold">No hay productos aún</p>
+        </div> :
         activities.map( item => (
           <div key={item.id} className="p-5 bg-white mt-5 flex justify-between rounded-md shadow-lg text-sm">
             <div className="space-y-1 relative">
@@ -60,7 +63,7 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
                 {/* {JSON.stringify(categoryName(item.category))} */}
               </p>
               <p className="text-md pt-3 text-gray-500">{item.name}</p>
-              <p className="text-md text-gray-500 m-0">
+              <p className="text-md text-gray-500 m-0 font-semibold">
                 S/. {item.precio}
               </p>
             </div>

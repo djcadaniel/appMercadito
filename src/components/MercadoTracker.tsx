@@ -16,13 +16,13 @@ export default function MercadoTracker({activities}: MercadoTrackerProps) {
 
   return (
     <>
-      <div className='flex  items-center flex-row justify-between gap-5 mt-5'>
+      <div className='flex  items-center flex-row justify-between gap-5 mt-5 md:mt-0'>
         <MercadoDisplay 
-          text = {'Productos'}
+          text = {'Productos: '}
           result = {cantProductos}
         />
         <MercadoDisplay 
-          text = {'Total'}
+          text = {'Total: S/'}
           result = {totalCost}
         />
       </div>

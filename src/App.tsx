@@ -23,19 +23,21 @@ function App() {
 
   return (
     <>
-      <div className=' w-full md:h-screen bg-green-400'>
-        <div className='flex flex-col h-full min-w-[420px]'>
-          <header className='w-full bg-gray-800'>
-            <div className='max-w-4xl mx-auto text-white px-5 py-3 bg-[#565CBA]'>
+      <div className=' w-full md:h-screen bg-green-400 font-signika'>
+        <div className='flex flex-col flex-wrap md:flex-row md:flex-wrap h-full min-w-[420px]'>
+          <header className='w-full bg-[#565CBA]'>
+            <div className='max-w-[1400px] mx-auto text-white px-5 py-3 md:py-1 bg-[#565CBA]'>
               <div className='flex justify-between items-center w-full'>
                 <img src={logo} alt="" className='h-[80px]'/>
-                <p className='text-xl md:text-2xl md:text-left text-center font-bold'>APP STORE</p>
+                <p className='text-xl md:text-xl md:text-left text-center font-bold'>APP STORE</p>
                 <button 
                   className='bg-[#41bfa4] hover:bg-gray-900 p-2 font-bold uppercase cursor-pointer rounded-lg text-sm disabled:opacity-10'
                   disabled = {!restartApp()}
                   onClick={onHandleReset}
                 >
-                  Reiniciar
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+</svg>
                 </button>
               </div>
               <MercadoTracker 
@@ -43,21 +45,25 @@ function App() {
               />
             </div>
           </header>
-          <div className='w-full bg-fuchsia-300 order-2 md:order-1'>
-            <section className='px-10 py-5 mx-auto max-w-4xl min-w-[420px] bg-slate-50'>
-              <ActivityList 
-                activities = {state.activities}
-                dispatch = {dispatch}
-              />
-            </section>
-          </div>
-          <div className='w-full bg-red-700 order-1 md:order-2'>
-            <section className='max-w-4xl min-w-[420px] mx-auto bg-slate-50'>
-              <Form 
-                dispatch={dispatch}
-                state = {state}
-              />
-            </section>
+          <div className='w-full mx-auto'>
+            <div className='flex flex-col md:flex-row max-w-[1400px] mx-auto'>
+              <div className='w-full md:w-1/2 bg-fuchsia-300 order-2'>
+                <section className='px-10 py-5 mx-auto min-w-[420px] md:h-[calc(100vh-110px)] bg-slate-500 overflow-scroll'>
+                  <ActivityList 
+                    activities = {state.activities}
+                    dispatch = {dispatch}
+                  />
+                </section>
+              </div>
+              <div className='w-full md:w-1/2 bg-red-700 order-1'>
+                <section className='min-w-[420px] mx-auto bg-slate-50'>
+                  <Form 
+                    dispatch={dispatch}
+                    state = {state}
+                  />
+                </section>
+              </div>
+            </div>
           </div>
         </div>
       </div>
