@@ -5,9 +5,8 @@ type MercadoDisplayProps = {
 
 export default function MercadoDisplay({text, result}: MercadoDisplayProps) {
   return (
-    <p className='text-white font-bold rounded-full grid grid-cols-1 gap-3 text-center text-2xl'>
-      <span className='font-black text-2xl text-orange'>{text}</span>
-      {result}
+    <p className='flex items-center font-bold rounded-full text-center text-lg md:text-xl'>
+      <span className='text-lg md:text-xl text-orange mr-1'>{text}:</span>{`${result}`}
     </p>
   )
 }

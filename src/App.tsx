@@ -4,6 +4,7 @@ import Form from './components/Form'
 import { activityReducer, initialState } from './reducers/activity-reducer'
 import ActivityList from './components/ActivityList'
 import MercadoTracker from './components/MercadoTracker'
+import logo from '/img/logo.png';
 
 function App() {
 
@@ -22,39 +23,44 @@ function App() {
 
   return (
     <>
-      <header className='bg-lime-600 py-3'>
-        <div className='max-w-4xl mx-auto flex justify-between'>
-          <h1>appMercado</h1>
-          <button 
-            className='bg-gray-800 hover:bg-gray-900 p-2 font-bold uppercase text-white cursor-pointer rounded-lg text-sm disabled:opacity-10'
-            disabled = {!restartApp()}
-            onClick={onHandleReset}
-          >
-            Reiniciar
-          </button>
+      <div className=' w-full md:h-screen bg-green-400'>
+        <div className='flex flex-col h-full min-w-[420px]'>
+          <header className='w-full bg-gray-800'>
+            <div className='max-w-4xl mx-auto text-white px-5 py-3 bg-[#565CBA]'>
+              <div className='flex justify-between items-center w-full'>
+                <img src={logo} alt="" className='h-[80px]'/>
+                <p className='text-xl md:text-2xl md:text-left text-center font-bold'>APP STORE</p>
+                <button 
+                  className='bg-[#369f88] hover:bg-gray-900 p-2 font-bold uppercase cursor-pointer rounded-lg text-sm disabled:opacity-10'
+                  disabled = {!restartApp()}
+                  onClick={onHandleReset}
+                >
+                  Reiniciar
+                </button>
+              </div>
+              <MercadoTracker 
+                activities = {state.activities}
+              />
+            </div>
+          </header>
+          <div className='w-full bg-fuchsia-300 order-2 md:order-1'>
+            <section className='p-10 mx-auto max-w-4xl min-w-[420px] bg-red-200'>
+              <ActivityList 
+                activities = {state.activities}
+                dispatch = {dispatch}
+              />
+            </section>
+          </div>
+          <div className='w-full bg-red-700 order-1 md:order-2'>
+            <section className='max-w-4xl min-w-[420px] mx-auto bg-blue-400'>
+              <Form 
+                dispatch={dispatch}
+                state = {state}
+              />
+            </section>
+          </div>
         </div>
-      </header>
-      <section className='bg-lime-500 py-20 px-5'>
-        <div className='max-w-4xl mx-auto'>
-          <Form 
-            dispatch={dispatch}
-            state = {state}
-          />
-        </div>
-      </section>
-      <section className='bg-gray-800 py-10'>
-        <div className='max-w-4xl mx-auto'>
-          <MercadoTracker 
-            activities = {state.activities}
-          />
-        </div>
-      </section>
-      <section className='p-10 mx-auto max-w-4xl'>
-        <ActivityList 
-          activities = {state.activities}
-          dispatch = {dispatch}
-        />
-      </section>
+      </div>
     </>
   )
 }
