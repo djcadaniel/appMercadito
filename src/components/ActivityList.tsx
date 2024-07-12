@@ -49,20 +49,19 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
 
   return (
     <>
-      <h2 className="text-4xl font-bold text-slate-600 text-center">Lista de Compras</h2>
+      <h2 className="text-xl md:text-4xl font-bold text-slate-600 text-center">Lista de Compras</h2>
       {isEmpty ?
         <p>No hay productos aún</p> :
         activities.map( item => (
-          <div key={item.id} className="p-5 bg-white mt-5 flex justify-between rounded-md shadow-lg">
-            <div className="space-y-2 relative">
-              <p className={`absolute uppercase rounded-lg font-bold -top-8 -left-8 px-10 py-2 text-white ${categoryColor(item.category)?.color}`}>
+          <div key={item.id} className="p-5 bg-white mt-5 flex justify-between rounded-md shadow-lg text-sm">
+            <div className="space-y-1 relative">
+              <p className={`absolute uppercase rounded-lg font-bold -top-4 -left-4 px-4 py-1 text-white ${categoryColor(item.category)?.color}`}>
                 {categoryName(item.category)}
                 {/* {JSON.stringify(categoryName(item.category))} */}
               </p>
-              <p className="text-2xl font-bold pt-5 text-gray-500">{item.name}</p>
-              <p className="font-bold text-xl text-gray-500">
-                <span>S/. </span>
-                {item.precio}
+              <p className="text-md pt-3 text-gray-500">{item.name}</p>
+              <p className="text-md text-gray-500 m-0">
+                S/. {item.precio}
               </p>
             </div>
             <div className="flex gap-5 items-center">
@@ -70,14 +69,14 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
                 onClick={()=> dispatch({type: 'set-activeId', payload: {id: item.id}})}
               >
                 <PencilSquareIcon
-                  className="h-8 w-8 text-[#41BFA4]"
+                  className="h-6 w-6 text-[#41BFA4]"
                 />
               </button>
               <button
                 onClick={()=> dispatch({type: 'delete-activity', payload: {id: item.id}})}
               >
                 <XCircleIcon 
-                  className="h-8 w-8 text-red-400"
+                  className="h-6 w-6 text-red-400"
                 />
               </button>
             </div>

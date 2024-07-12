@@ -44,7 +44,7 @@ function App() {
             </div>
           </header>
           <div className='w-full bg-fuchsia-300 order-2 md:order-1'>
-            <section className='p-10 mx-auto max-w-4xl min-w-[420px] bg-slate-50'>
+            <section className='px-10 py-5 mx-auto max-w-4xl min-w-[420px] bg-slate-50'>
               <ActivityList 
                 activities = {state.activities}
                 dispatch = {dispatch}
