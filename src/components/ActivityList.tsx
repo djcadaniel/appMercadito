@@ -53,16 +53,16 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
       {isEmpty ?
         <p>No hay productos aún</p> :
         activities.map( item => (
-          <div key={item.id} className="p-5 bg-black mt-5 flex justify-between">
+          <div key={item.id} className="p-5 bg-white mt-5 flex justify-between rounded-md shadow-lg">
             <div className="space-y-2 relative">
-              <p className={`absolute uppercase font-bold -top-8 -left-8 px-10 py-2 text-white ${categoryColor(item.category)?.color}`}>
+              <p className={`absolute uppercase rounded-lg font-bold -top-8 -left-8 px-10 py-2 text-white ${categoryColor(item.category)?.color}`}>
                 {categoryName(item.category)}
                 {/* {JSON.stringify(categoryName(item.category))} */}
               </p>
-              <p className="text-2xl font-bold pt-5 text-white">{item.name}</p>
-              <p className="font-bold text-3xl text-lime-500">
+              <p className="text-2xl font-bold pt-5 text-gray-500">{item.name}</p>
+              <p className="font-bold text-xl text-gray-500">
+                <span>S/. </span>
                 {item.precio}
-                <span>soles</span>
               </p>
             </div>
             <div className="flex gap-5 items-center">
@@ -70,14 +70,14 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
                 onClick={()=> dispatch({type: 'set-activeId', payload: {id: item.id}})}
               >
                 <PencilSquareIcon
-                  className="h-8 w-8 text-gray-200"
+                  className="h-8 w-8 text-[#41BFA4]"
                 />
               </button>
               <button
                 onClick={()=> dispatch({type: 'delete-activity', payload: {id: item.id}})}
               >
                 <XCircleIcon 
-                  className="h-8 w-8 text-red-500"
+                  className="h-8 w-8 text-red-400"
                 />
               </button>
             </div>

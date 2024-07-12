@@ -31,7 +31,7 @@ function App() {
                 <img src={logo} alt="" className='h-[80px]'/>
                 <p className='text-xl md:text-2xl md:text-left text-center font-bold'>APP STORE</p>
                 <button 
-                  className='bg-[#369f88] hover:bg-gray-900 p-2 font-bold uppercase cursor-pointer rounded-lg text-sm disabled:opacity-10'
+                  className='bg-[#41bfa4] hover:bg-gray-900 p-2 font-bold uppercase cursor-pointer rounded-lg text-sm disabled:opacity-10'
                   disabled = {!restartApp()}
                   onClick={onHandleReset}
                 >
@@ -44,7 +44,7 @@ function App() {
             </div>
           </header>
           <div className='w-full bg-fuchsia-300 order-2 md:order-1'>
-            <section className='p-10 mx-auto max-w-4xl min-w-[420px] bg-red-200'>
+            <section className='p-10 mx-auto max-w-4xl min-w-[420px] bg-slate-50'>
               <ActivityList 
                 activities = {state.activities}
                 dispatch = {dispatch}
@@ -52,7 +52,7 @@ function App() {
             </section>
           </div>
           <div className='w-full bg-red-700 order-1 md:order-2'>
-            <section className='max-w-4xl min-w-[420px] mx-auto bg-blue-400'>
+            <section className='max-w-4xl min-w-[420px] mx-auto bg-slate-50'>
               <Form 
                 dispatch={dispatch}
                 state = {state}

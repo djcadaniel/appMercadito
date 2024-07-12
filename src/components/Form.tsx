@@ -92,11 +92,11 @@ export default function Form({dispatch, state}: FormProps) {
       onSubmit={handleSubmit}
     >
       <div>
-        <label htmlFor="" className="text-green-500">Categoria</label>
+        <label htmlFor="" className="text-black">Categoria</label>
         <select 
           name="" 
           id="category" 
-          className="w-full border border-slate-300 p-2 rounded-lg bg-white"
+          className="w-full border border-slate-300 p-2 rounded-lg bg-slate-50"
           value={activity.category}
           onChange={handleChange}
         >
