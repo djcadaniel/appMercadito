@@ -93,7 +93,7 @@ export default function Form({dispatch, state}: FormProps) {
   return (
     <form 
       // className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-fixed bg-[url(/img/orange.jpg)] md:bg-[url(/img/lemon.jpg)]`}
-      className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/img/orange.jpg)] md:bg-[url(${lemon})]`}
+      className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-[url(${orange})] md:bg-[url(${lemon})]`}
       onSubmit={handleSubmit}
     >
       <div>
