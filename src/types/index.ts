@@ -1,7 +1,9 @@
+import React from "react";
+
 export type Category = {
   id: number,
   name: string,
-  color: string
+  color: string,
 }
 
 export type Activity = {

@@ -6,6 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { FaMoneyBillWave } from "react-icons/fa";
 import lemon from '/img/lemon.jpg';
+import orange from '/img/orange.jpg';
 
 type FormProps = {
   dispatch: Dispatch<ActivityActions>,
@@ -91,9 +92,9 @@ export default function Form({dispatch, state}: FormProps) {
 
   return (
     <form 
-      className="w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-fixed"
+      // className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-fixed bg-[url(/img/orange.jpg)] md:bg-[url(/img/lemon.jpg)]`}
+      className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/img/orange.jpg)] md:bg-[url(${lemon})]`}
       onSubmit={handleSubmit}
-      style={{backgroundImage: `url(${lemon})`}}
     >
       <div>
         <label htmlFor="" className="text-white flex items-center gap-1"><BiSolidCategoryAlt />Categoria</label>
