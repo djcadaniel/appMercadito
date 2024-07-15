@@ -3,6 +3,9 @@ import { categories } from "../data/categories";
 import { Activity } from "../types";
 import { ActivityActions, ActivityState } from "../reducers/activity-reducer";
 import {v4 as uuidv4} from 'uuid';
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import { FaMoneyBillWave } from "react-icons/fa";
+import lemon from '/img/lemon.jpg';
 
 type FormProps = {
   dispatch: Dispatch<ActivityActions>,
@@ -88,11 +91,12 @@ export default function Form({dispatch, state}: FormProps) {
 
   return (
     <form 
-      className="w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg"
+      className="w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-fixed"
       onSubmit={handleSubmit}
+      style={{backgroundImage: `url(${lemon})`}}
     >
       <div>
-        <label htmlFor="" className="text-black">Categoria</label>
+        <label htmlFor="" className="text-white flex items-center gap-1"><BiSolidCategoryAlt />Categoria</label>
         <select 
           name="" 
           id="category" 
@@ -111,7 +115,7 @@ export default function Form({dispatch, state}: FormProps) {
         </select>
       </div>
       <div className="grid grid-cols-1 gap-3">
-          <label htmlFor="name">Actividad</label>
+          <label htmlFor="name" className="flex items-center gap-1 text-white"><BiSolidCategoryAlt />Actividad</label>
           <input
             id="name" 
             type="text"
@@ -122,7 +126,7 @@ export default function Form({dispatch, state}: FormProps) {
           />
       </div>
       <div className="grid grid-cols-1 gap-3">
-          <label htmlFor="precio" className="font-bold">Precio</label>
+          <label htmlFor="precio" className="font-bold flex items-center gap-1 text-white"><FaMoneyBillWave />Precio</label>
           <input
             id="precio" 
             type="number"
@@ -134,7 +138,7 @@ export default function Form({dispatch, state}: FormProps) {
       </div>
       <input 
         type="submit"
-        className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10"
+        className="bg-[#41BFA4] hover:bg-[#51a694] w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10"
         value={buttonSave(activity.category)}
         disabled={!isValidity()}
       />

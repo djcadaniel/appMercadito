@@ -6,6 +6,7 @@ import ActivityList from './components/ActivityList'
 import MercadoTracker from './components/MercadoTracker'
 import logo from '/img/logo.png';
 
+
 function App() {
 
   const [state, dispatch] = useReducer(activityReducer, initialState);
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      <div className=' w-full md:h-screen bg-green-400 font-signika'>
+      <div className=' w-full md:h-screen font-signika'>
         <div className='flex flex-col flex-wrap md:flex-row md:flex-wrap h-full min-w-[420px]'>
           <header className='w-full bg-[#565CBA]'>
             <div className='max-w-[1400px] mx-auto text-white px-5 py-3 md:py-1 bg-[#565CBA]'>
