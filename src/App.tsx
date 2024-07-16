@@ -48,8 +48,8 @@ function App() {
           </header>
           <div className='w-full mx-auto'>
             <div className='flex flex-col md:flex-row max-w-[1400px] mx-auto'>
-              <div className='w-full md:w-1/2 bg-fuchsia-300 order-2'>
-                <section className='px-10 py-5 mx-auto min-w-[420px] md:h-[calc(100vh-110px)] bg-slate-500 overflow-scroll'>
+              <div className='w-full md:w-1/2 order-2'>
+                <section className='mx-auto min-w-[420px] md:h-[calc(100vh-110px)] bg-white md:overflow-scroll pt-16 md:p-0'>
                   <ActivityList 
                     activities = {state.activities}
                     dispatch = {dispatch}

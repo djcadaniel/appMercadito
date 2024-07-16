@@ -12,6 +12,7 @@ type FormProps = {
   dispatch: Dispatch<ActivityActions>,
   state: ActivityState
 }
+
 const initialState = {
   id: uuidv4(),
   category: 1,
@@ -23,27 +24,50 @@ export default function Form({dispatch, state}: FormProps) {
 
   const [activity, setActivity] = useState<Activity>(initialState)
 
+  const MAX_PRICE = 200;
+  const MIN_PRICE = 1;
+
   useEffect(()=>{
     if(state.activeId){
       const selectedActivity = state.activities.filter(item => item.id === state.activeId)[0]
-      //me va a traer la misma actividad con el mismo id que seleccione
-      //al poner[0], me devolverá el objeto
-      //recuerdda:filter: Devuelve un nuevo array con todos los elementos que cumplan la condición.
-      //const numbers = [1, 2, 3, 4];
-      //const evens = numbers.filter(num => num % 2 === 0); 
-      // evens será [2, 4]
       console.log(selectedActivity)
       setActivity(selectedActivity)
     }
   },[state.activeId])
 
-  const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
-    const isNumberField = ['category', 'precio'].includes(e.target.id)
-    console.log(isNumberField)
+  
+  
+  const handleChange = ({target}: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
+    const {id, value} = target;
+    const isNumberField = ['category', 'precio'].includes(target.id)
     setActivity({
       ...activity,
-      [e.target.id] : isNumberField ? +e.target.value : e.target.value
+      [id] : isNumberField ? +value: value
     })
+  }
+  
+  const isValidityPrecio = (value : number)=>{
+    if(value > MAX_PRICE || value < MIN_PRICE) {
+      return false;
+    }
+    return true;
+  }
+  
+  const handlePrecioChange = ({target} : ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
+    const {id, value} = target;
+    const isNumberInput = ['category', 'precio'].includes(id);
+    let inputPrecio = document.getElementById('precio') as HTMLInputElement;
+    let valuePrecio = parseFloat(inputPrecio.value);
+    
+    if(isValidityPrecio(valuePrecio)) {
+      setActivity({
+        ...activity,
+        [id] : isNumberInput ? +value : value,
+      });
+    }else{
+      alert('Puedes ingresar máximo hasta 200 y mayor a 0')
+      return;
+    }  
   }
 
   const buttonSave = (category: number) => {
@@ -81,8 +105,17 @@ export default function Form({dispatch, state}: FormProps) {
     return name.trim() !== '' && precio > 0
   }
 
+
+  // const MAX_ITEMS = 10;
+  // const MIN_ITEMS = 0;
+
   const handleSubmit = (e:FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
+    let inputPrecio = document.getElementById('precio') as HTMLInputElement;
+    let valuePrecio = parseFloat(inputPrecio.value);
+    console.log(valuePrecio)
+    if(valuePrecio > MAX_PRICE) return;
+
     dispatch({type:"save-activity", payload: {newActivity: activity}})
     setActivity({
       ...initialState,
@@ -93,7 +126,7 @@ export default function Form({dispatch, state}: FormProps) {
   return (
     <form 
       // className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-fixed bg-[url(/img/orange.jpg)] md:bg-[url(/img/lemon.jpg)]`}
-      className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 rounded-lg bg-cover bg-center bg-no-repeat bg-[url(${orange})] md:bg-[url(${lemon})]`}
+      className={`w-full md:h-[calc(100vh-110px)] space-y-5 shadow p-10 bg-cover bg-center bg-no-repeat bg-[url(${orange})] md:bg-[url(${lemon})]`}
       onSubmit={handleSubmit}
     >
       <div>
@@ -127,14 +160,14 @@ export default function Form({dispatch, state}: FormProps) {
           />
       </div>
       <div className="grid grid-cols-1 gap-3">
-          <label htmlFor="precio" className="font-bold flex items-center gap-1 text-white"><FaMoneyBillWave />Precio</label>
+          <label htmlFor="precio" className="font-bold flex items-center gap-1 text-white"><FaMoneyBillWave />Precio (Monto máx. 200)</label>
           <input
             id="precio" 
             type="number"
-            className="border border-slate-300 p-2 rounded-lg"
-            placeholder="Ingresa precio"
+            className={`border border-slate-300 p-2 rounded-lg ${isValidityPrecio(activity.precio) ? '' : 'error'}`}
+            placeholder="Ingresa precio(monto máximo 200 soles)"
             value={activity.precio}    
-            onChange={handleChange}
+            onChange={handlePrecioChange}
           />
       </div>
       <input 

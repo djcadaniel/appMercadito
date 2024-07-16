@@ -51,12 +51,12 @@ export default function ActivityList({activities, dispatch}: ActivityListProps) 
   return (
     <>
       {isEmpty ?
-        <div className="w-full flex flex-col items-center space-y-6">
-          <img src={imgListVacia} alt="" className="w-[15rem] max-w-full"/>
+        <div className="w-full flex flex-col items-center md:justify-center md:h-full md:items-center space-y-6 bg-white">
+          <img src={imgListVacia} alt="" className="w-[160px] md:w-[15rem] max-w-full"/>
           <p className="text-[#8F8F91] text-xl font-bold">No hay productos aún</p>
         </div> :
         activities.map( item => (
-          <div key={item.id} className="p-5 bg-white mt-5 flex justify-between rounded-md shadow-lg text-sm">
+          <div key={item.id} className="mx-10 my-5 p-5 bg-slate-100 mt-5 flex justify-between rounded-md shadow-lg text-sm">
             <div className="space-y-1 relative">
               <p className={`absolute uppercase rounded-lg font-bold -top-4 -left-4 px-4 py-1 text-white ${categoryColor(item.category)?.color}`}>
                 {categoryName(item.category)}
