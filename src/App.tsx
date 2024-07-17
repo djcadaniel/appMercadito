@@ -6,7 +6,6 @@ import ActivityList from './components/ActivityList'
 import MercadoTracker from './components/MercadoTracker'
 import logo from '/img/logo.png';
 
-
 function App() {
 
   const [state, dispatch] = useReducer(activityReducer, initialState);
